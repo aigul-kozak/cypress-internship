@@ -16,18 +16,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2. Встановлюємо Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      # 2. Запуск Cypress (автоматически установит Node.js и Cypress)
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
         with:
-          node-version: 18
-
-      # 3. Встановлюємо залежності
-      - name: Install dependencies
-        run: npm install
-
-      # 4. Запуск Cypress із записом на Dashboard
-      - name: Run Cypress tests
+          record: true   # включает отправку результатов на Cypress Dashboard
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }} # ключ Dashboard
-        run: npm run cypress:record
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
