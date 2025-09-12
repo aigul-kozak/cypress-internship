@@ -4,7 +4,7 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - main # Запуск при пуші в main
+      - master # Запуск при пуші в main
   workflow_dispatch: # Можливість запускати вручну
 
 jobs:
