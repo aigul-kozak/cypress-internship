@@ -10,8 +10,8 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 60000,
      retries: 1,
-     video: true,                      // включаємо запис видео
-    screenshotsFolder: 'cypress/screenshots', // папка для скриншотів
+     video: true,                      
+    screenshotsFolder: 'cypress/screenshots', 
     videosFolder: 'cypress/videos', 
   },
 });
