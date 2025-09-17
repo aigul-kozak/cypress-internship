@@ -3,34 +3,34 @@ name: Cypress Tests
 on:
   push:
     branches:
-      - master       # запуск при пуше в main
-  workflow_dispatch: # возможность запуска вручную
+      - master       
+  workflow_dispatch: 
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Клонируем репозиторий
+      
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      # 2. Устанавливаем Node.js
+      
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      # 3. Устанавливаем зависимости проекта
+      
       - name: Install dependencies
         run: npm ci
 
-      # 4. Запуск Cypress через официальный action
+      
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          record: true                    # отправка результатов на Dashboard
-          config-file: cypress.config.js  # используем твой конфиг
-          spec: "cypress/e2e/telnyx_test.cy.js" # конкретный тест
+          record: true                    
+          config-file: cypress.config.js  
+          spec: "cypress/e2e/telnyx_test.cy.js" 
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
